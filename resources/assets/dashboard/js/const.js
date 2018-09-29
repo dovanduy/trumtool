@@ -14,5 +14,9 @@ const RouteViettelCheckSeri = base_url + "/dashboard/viettel/checkseri"
 
 //data phone
 
+
 const RoutegetTokenDataphone = base_url + "/dashboard/dataphone/getToken";
 const RouteaddPhoneDataphone = base_url + "/dashboard/dataphone/add"
+
+const RoutegetOTPGuest = base_url + "/getOTP";
+const RoutegetTokenGuest = base_url + "/getToken";

@@ -10,15 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+
 
 Route::get('/getotp','HomeController@index')->name('home.index');
-Route::get('/dashboard','DashboardController@GetView')->name('dashboard.index');
+Route::post('/getOTP','HomeController@getOTP')->name('getOTP.store');
+Route::post('/getToken','HomeController@getToken')->name('getToken.store');
 
+Auth::routes();
+Route::get('/dashboard','DashboardController@GetView')->name('dashboard.index');
 Route::get('/404','HomeController@getView404')->name('page404.index');
 Route::get('/403','HomeController@getView403')->name('page403.index');
 Route::group(['middleware' => ['auth', 'permissions'] , 'prefix' => 'dashboard'], function () {
-	//Route::get('/','DashboardController@GetView')->name('dashboard.index');
+	// Route::get('/','DashboardController@GetView')->name('dashboard.index');
 	
 	Route::group(['prefix' => 'viettel'], function () {
 		Route::get('/','CheckSeriViettelController@GetView')->name('checkseriviettel.create');

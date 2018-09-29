@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Helpers\Commons\PayBillMobi;
 class HomeController extends Controller
 {
     /**
@@ -11,10 +11,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -30,6 +30,19 @@ class HomeController extends Controller
     }
     public function getView403(){
         return view('page.403');
+    }
+    public function getOTP(Request $request){
+        $phoneNumber = $request->get('phoneNumber');
+        $res = PayBillMobi::getOTP($phoneNumber);
+        return $res;
+    }
+    public function getToken(Request $request){
+        $data = array();
+        $phoneNumber = $request->get('phoneNumber');
+        $otp = $request->get('otp');
+        $deviceId = $request->get('deviceId');
+        $res = PayBillMobi::getTokens($phoneNumber, $otp ,$deviceId);
+        return $res;
     }
     
 }

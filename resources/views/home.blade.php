@@ -9,8 +9,8 @@
                             </div>
 							
                             <div class="card-body">
-                                <form action="{{route('dataphonemobiaddphone.store')}}" method="POST" class="form-horizontal form-bordered" >
-								@csrf
+                                <form action="" method="POST" class="form-horizontal form-bordered" >
+								
 								
                                     <div class="form-body">
                                         <div class="form-group row">
@@ -83,7 +83,7 @@
                 var phoneNumber = $('#phoneNumber').val();
                 var token = $('#token').val();
                 var deviceId = $('#deviceId').val();
-                $("#res").append(phoneNumber + "|" + token + "|" +deviceId );
+                $("#res").append(phoneNumber + "|" + token + "|" +deviceId +"\n");
             });
 		});
 
@@ -93,7 +93,7 @@
         var phoneNumber = $('#phoneNumber').val();
         jQuery.ajax({
             type: "post",
-            url: RoutegetOTP,
+            url: RoutegetOTPGuest,
             data: {
             _token : token,
             phoneNumber : phoneNumber,
@@ -115,7 +115,7 @@
                         timer: 2000,   
                         showConfirmButton: false 
                     });
-                    time =60;
+                    time =100;
                     Timeout();
                 }else{
                     swal({   
@@ -139,7 +139,7 @@
         var deviceId = $('#deviceId').val();
         jQuery.ajax({
             type: "post",
-            url: RoutegetTokenDataphone,
+            url: RoutegetTokenGuest,
             data: {
                 _token : token,
                 phoneNumber : phoneNumber,

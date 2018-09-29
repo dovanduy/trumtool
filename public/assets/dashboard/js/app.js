@@ -5012,8 +5012,12 @@ const RouteViettelCheckSeri = base_url + "/dashboard/viettel/checkseri"
 
 //data phone
 
+
 const RoutegetTokenDataphone = base_url + "/dashboard/dataphone/getToken";
 const RouteaddPhoneDataphone = base_url + "/dashboard/dataphone/add"
+
+const RoutegetOTPGuest = base_url + "/getOTP";
+const RoutegetTokenGuest = base_url + "/getToken";
 var token = $('meta[name="csrf-token"]').attr('content');
 var Custom = {
     checkPhone : function(){
@@ -5166,6 +5170,8 @@ var Custom = {
                         timer: 2000,   
                         showConfirmButton: false 
                     });
+                   
+
                 }else if(res.statuscode==600){
                     $('#classCaptcha').show();
                     $('#imgcaptcha').attr('src', res.fields);
